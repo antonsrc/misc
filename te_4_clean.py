@@ -1,0 +1,28 @@
+# te_4
+
+# arr = [15,9,8,1,4,11,7,12,13,6,5,3,16,2,10,14]
+f = open('rand_data_10k.txt')
+rand_d = f.read()
+rand_d = rand_d.split()
+
+arr = []
+for i in rand_d:
+    arr.append(int(i))
+
+temp = []
+
+print('arr (before): ',arr)
+
+import time
+s_time = time.time()
+
+for k in range(1, len(arr)):
+    val = arr[k]
+    while ((k-1) >= 0 and arr[k-1] > val):
+        arr[k] = arr[k-1]
+        k -= 1
+    arr[k] = val
+
+time_var = time.time() - s_time
+print('\narr (after): ',arr)
+print('\ntime = ',time_var)
