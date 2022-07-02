@@ -18,6 +18,7 @@ def choiser(t2_):
         timer_loop(0)
     elif (inp == 'c'):
         t3 = int(input())
+        t3 *= 60
         timer_loop(t2_+t3)
     else:
         choiser(t2_)
