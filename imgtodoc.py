@@ -4,3 +4,5 @@
  
  doc_file = r'D:\d\misc\void.docx'
  img_dir = r'D:\d\misc\img'
+ 
+ 
