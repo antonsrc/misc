@@ -10,7 +10,7 @@ doc = docx.Document(doc_file)
 tree = list(os.walk(img_dir))
 for address, dirs, files in tree:
     for name in files:
-        doc.add_picture(img_dir + '\\' + name, width = Cm(12))
+        doc.add_picture(img_dir + '\\' + name, width = Cm(10))
 
 doc.save(doc_file)
 
