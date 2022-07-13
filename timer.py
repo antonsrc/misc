@@ -1,12 +1,14 @@
 import msvcrt
 import time
 import datetime
+import os
+import pywinauto
 
 def choiser(t2_):
     print("\n\nPress ENTER for continue")
     print("Press ESC for exit")
     print("Press Z for set counter to zero")
-    print("Press C for change counter (+/-) seconds")
+    print("Press C for change counter (+/-) minutes")
     inp = msvcrt.getwch()
     if (inp == '\r'):       # Enter
         timer_loop(t2_)
@@ -23,17 +25,21 @@ def choiser(t2_):
 
 def timer_loop(last_time):
     t1 = time.time()
-    i = 1
     while (not msvcrt.kbhit()) or (msvcrt.getwch() != '\r'):
-        time.sleep(0.1)
         t2 = time.time()-t1
         t2 = last_time + int(t2)
         t2_format = str(datetime.timedelta(seconds = t2))
-        if t2 >= i: 
-            print('\r' + t2_format, end='')
-            i += 1
+        time.sleep(0.1)
+        print('\r' + t2_format, end='')
     choiser(t2)
 
+#change position and size of window
+handle_ = pywinauto.findwindows.find_windows(active_only=True)[0]
+app = pywinauto.application.Application().connect(handle=handle_)
+dlg_spec = app.window()
+dlg_spec.move_window(x=500, y=500, width=600, height=400, repaint=True)
+
+os.system('color 37')
 print("Press ENTER for start/pause")
 pressedKey = msvcrt.getwch()
 if pressedKey == '\r':
