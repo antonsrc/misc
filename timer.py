@@ -40,6 +40,7 @@ dlg_spec = app.window()
 dlg_spec.move_window(x=500, y=500, width=600, height=400, repaint=True)
 
 os.system('color 37')
+os.system('cls')
 print("Press ENTER for start/pause")
 pressedKey = msvcrt.getwch()
 if pressedKey == '\r':
